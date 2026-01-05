@@ -1,0 +1,32 @@
+data:
+  ticker: "^NSEI"
+  start_date: "2015-01-01"
+  end_date: "2023-01-01"
+  time_step: 60
+  test_split: 0.8
+
+model:
+  type: "lstm_cnn" # Options: lstm_cnn, bidirectional_lstm, attention_lstm
+  epochs: 50
+  batch_size: 64
+  units_lstm: 50
+  units_dense: 25
+  filters_cnn: 64
+  kernel_size: 2
+  pool_size: 2
+  dropout: 0.2
+  learning_rate: 0.001
+
+monte_carlo:
+  num_simulations: 1000
+  num_days: 252
+
+feature_engineering:
+  use_technical_indicators: true
+  indicators:
+    - "RSI"
+    - "MACD"
+    - "Bollinger_Bands"
+    - "SMA"
+    - "EMA"
+    - "Volume"
